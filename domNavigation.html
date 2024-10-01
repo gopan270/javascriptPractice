@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom navigation</title>
+</head>
+<!-- <style>
+    .even{
+        background-color: red;
+        border: 2px solid red;
+    }
+    .odd{
+        background-color: green;
+        border: 2px solid green;
+    }
+    .odd:hover,.even:hover{ 
+        border-color: yellow;
+        transform:scale(1.2)
+    }
+</style> -->
+
+<body>  
+    <input id="input">
+    <button id="btn">Click</button>
+    <script>
+        
+        let input=document.getElementById('input')
+        let btn=document.getElementById('btn')
+        let body=document.getElementsByTagName('body')
+        let div=document.createElement('div')
+        div.setAttribute('id','container')
+        div.style.display='flex'
+        div.style.justifyContent='center'
+        div.style.gap='5px'
+        body[0].append(div)
+        let even=document.getElementsByClassName('even')
+        let odd=document.getElementsByClassName('odd')
+        btn.addEventListener('click',()=>{
+            let n=Number(input.value)
+            while(n>0){
+                let item=document.createElement('div')
+                if(n%2===0){
+                    item.classList.add('even')
+                }else{
+                    item.classList.add('odd')
+                }
+                
+                item.style.width='50px'
+                item.style.height='50px'
+                div.append(item)
+                n--
+            }
+            for(let i=0;i<even.length;i++){
+                even[i].style.backgroundColor='red'
+            }
+            for(let i=0;i<odd.length;i++){
+                odd[i].style.backgroundColor='green'
+            }
+        })
+        document.getElementById('container').addEventListener('mouseover',function(e){
+            let targ=e.target
+            if(targ.getAttribute('class').includes('even')||targ.getAttribute('class').includes('odd')){
+                targ.style.backgroundColor='yellow'
+                targ.style.transform='scale(1.2)'
+            }
+        })
+        document.getElementById('container').addEventListener('mouseout',function(e){
+            let targ=e.target
+            if(targ.getAttribute('class').includes('even')){
+                targ.style.backgroundColor='red'
+                targ.style.transform=''
+            }else if(targ.getAttribute('class').includes('odd')){
+                targ.style.backgroundColor='green'
+                targ.style.transform=''
+
+            }
+        })
+    </script>
+</body>
+</html>
