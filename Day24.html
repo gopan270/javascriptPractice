@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 24</title>
+    <style>
+        #container{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        #map_container,#foreach_container{
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .card{
+            width: 150px;
+            height: 170px;
+            border: 2px solid black;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 10px;
+            
+        }
+        .card img{
+            width: 130px;
+            height: 100px;
+            border-radius: 5px;
+        }
+        .card .heading{
+            font-size: large;
+            margin: auto;
+        }
+        .card .descr{
+            margin:auto;
+            width: 120px;
+            height: 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="map_container">
+            <h3>Map</h3>
+        </div>
+        <div id="foreach_container">
+            <h3>forEach</h3>
+        </div>
+    </div>
+    <!-- <script>
+       let tempDegreeCelcius=[20,30,50,90,100]
+       let fahrenheit=tempDegreeCelcius.map(temp=>(temp*1.8)+32) 
+       console.log(fahrenheit)
+       let alphabets=['a','b','c','d','e','f']
+       let newalph=alphabets.map((alp,index)=>`${alp}-${index}`)
+       console.log(newalph)
+    </script> -->
+    <script>
+        let cardStyleArray=[
+        {
+            title:'Javascript',
+            color:'#eab676',
+            backgroundColor:'#0a05ff',
+            description:'Lorem text',
+            imgUrl:'https://idestrainings.com/wp-content/uploads/2021/11/JavaScript-training.jpg'
+        },
+        {
+            title:'HTML',
+            color:'#ffffff',
+            backgroundColor:'#1a0000',
+            description:'Lorem',
+            imgUrl:'https://play-lh.googleusercontent.com/RslBy1o2NEBYUdRjQtUqLbN-ZM2hpks1mHPMiHMrpAuLqxeBPcFSAjo65nQHbTA53YYn'
+        },
+        {
+            title:'CSS',
+            color:'#FF0000',
+            backgroundColor:'#37E534',
+            description:'Lorem',
+            imgUrl:'https://www.oxfordwebstudio.com/user/pages/06.da-li-znate/sta-je-css/sta-je-css.png'
+        },
+        {
+            title:'React',
+            color:'#ffffff',
+            backgroundColor:'#A52A2A',
+            description:'Lorem',
+            imgUrl:'https://d31ezp3r8jwmks.cloudfront.net/nr9p5isqq3yn41tqrh1tr4lttr1v'
+        }
+        ]
+        let mapContainer=document.querySelector('#map_container')
+
+        let component=cardStyleArray.map((ele)=>{
+            let card=document.createElement('div')
+            card.classList.add('card')
+            card.style.backgroundColor=ele.backgroundColor
+            let img=document.createElement('img')
+            img.setAttribute('src',ele.imgUrl)
+            card.append(img)
+            let heading=document.createElement('p')
+            heading.classList.add('heading')
+            heading.innerText=ele.title
+            heading.style.color=ele.color
+            heading.style.fontWeight='700'
+            card.append(heading)
+            let descr=document.createElement('p')
+            descr.classList.add('descr')
+            descr.innerText=ele.description
+            descr.style.color=ele.color
+            card.append(descr)
+            mapContainer.append(card)
+        })
+        let forContainer=document.querySelector('#foreach_container')
+        cardStyleArray.forEach(ele=>{
+            let card=document.createElement('div')
+            card.classList.add('card')
+            card.style.backgroundColor=ele.backgroundColor
+            let img=document.createElement('img')
+            img.setAttribute('src',ele.imgUrl)
+            card.append(img)
+            let heading=document.createElement('p')
+            heading.classList.add('heading')
+            heading.innerText=ele.title
+            heading.style.color=ele.color
+            heading.style.fontWeight='700'
+            card.append(heading)
+            let descr=document.createElement('p')
+            descr.classList.add('descr')
+            descr.innerText=ele.description
+            descr.style.color=ele.color
+            card.append(descr)
+            forContainer.append(card)
+
+        })
+    </script>
+</body>
+</html>
